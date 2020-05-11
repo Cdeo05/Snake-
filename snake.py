@@ -12,6 +12,7 @@ movement=['d']*len(initialpos)
 key='d'
 f1=0
 f2=0
+score=-1
 def move():
     updated=[]
     for i in range(len(initialpos)):
@@ -96,11 +97,12 @@ def onkeypress(event):
         key='d'
 
 def food():
-    global f1,f2
+    global f1,f2,score
     f1=random.randint(1,rows-2) 
     f2=random.randint(1,cols-2)
+    score+=1
     
-    
+
 def main():
     global rows,cols,key
     initialize_matrix(rows,cols)
@@ -114,6 +116,7 @@ def main():
         while(key in valid):
             if(check()):
                 print("You lose")
+                print("Your Score:{}".format(score))
                 c=0
                 break
             move()
